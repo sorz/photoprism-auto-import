@@ -1,0 +1,15 @@
+[Unit]
+Description=Monitor new photos and call PhotoPrism to import them
+
+[Path]
+TriggerLimitIntervalSec=5min
+
+# Add your import directory below
+PathExistsGlob=/path/to/import/MyPhotos/*.jpg
+PathExistsGlob=/path/to/import/MyPhotos/*.jpeg
+PathExistsGlob=/path/to/import/MyPhotos/*.heic
+PathExistsGlob=/path/to/import/MyPhotos/*.mp4
+PathExistsGlob=/path/to/import/NyPhotos/*.mov
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,33 @@
+[Unit]
+Description=Request PhotoPrism import photos and wait for it
+Requires=photoprism.service
+Before=photoprism.service
+
+[Service]
+Type=exec
+DynamicUser=yes
+
+# Set syncphoto.py path & Session ID file
+# Session ID file should only readable by root
+ExecStart=/opt/syncphoto/syncphoto.py
+LoadCredential=session_id:/opt/syncphoto/session_id
+
+# Set PhotoPrism server URL
+Environment=API_HTTP=https://photoprism.example.com/api/v1
+Environment=API_WEBSOCKET=wss://photoprism.exmaple.com/api/v1/ws
+
+# Set the folder name inside import directory
+Environment=IMPORT_PATH=MyPhotos
+
+# Security enhancement
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectControlGroups=true
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_INET AF_INET6
+SystemCallFilter=@system-service @basic-io @network-io @io-event @aio @file-system
+SystemCallFilter=~@resources @privileged
+
