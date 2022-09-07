@@ -1,4 +1,5 @@
 # PhotoPrism Auto Import
+Systemd-based new-file-triggered PhotoPrism auto-import sciprt.
 
 This repositry contains a Python scirpt to call
 [PhotoPrism](https://photoprism.app/) to import photos on given folder, and
@@ -37,7 +38,7 @@ sudo pacman -S python-requests python-websocket-client
 - No extra daemon, no timer/crontab, no polling. Take Systemd's functionality
   for free!
 
-## Known issues
+## Caveats
 
 - Multiple import directories are not supported (can be added if someone
   need that).
@@ -54,4 +55,8 @@ sudo pacman -S python-requests python-websocket-client
 
 - If any error occurs during import and left files, it will retry repeatedly.
   The retry interval is limited by `StartLimitIntervalSec=` on systemd.path.
+
+## See also
+
+- [photoprism-syncthing-indexer](https://github.com/signalkraft/photoprism-syncthing-indexer)
 
